@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Team Availability Tracker</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Team Availability Tracker</h1>
+
+    <div class="container">
+
+        {% for member in members %}
+
+        <div class="card">
+
+            <div class="member-info">
+
+                <h3>{{ member.name }}</h3>
+
+                <p>{{ member.role }}</p>
+
+                <p class="time-info">
+                    Last updated: {{ member.time_ago }}
+                </p>
+
+                {% if not member.available %}
+
+                <p class="busy-time">
+                    Available in: {{ member.available_in }}
+                </p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="actions">
+
+                <!-- Current Status -->
+
+                <form action="/toggle/{{ member.id }}" method="POST">
+
+                    {% if member.available %}
+
+                    <button class="available">
+                        🟢 AVAILABLE
+                    </button>
+
+                    {% else %}
+
+                    <button class="busy">
+                        🔴 BUSY
+                    </button>
+
+                    {% endif %}
+
+                </form>
+
+                <!-- Busy Duration Options -->
+
+                {% if member.available %}
+
+                <div class="busy-buttons">
+
+                    <form action="/set_busy/{{ member.id }}/1"
+                          method="POST">
+                        <button class="busy-option">
+                            Busy 1 Hour
+                        </button>
+                    </form>
+
+                    <form action="/set_busy/{{ member.id }}/2"
+                          method="POST">
+                        <button class="busy-option">
+                            Busy 2 Hours
+                        </button>
+                    </form>
+
+                    <form action="/set_busy/{{ member.id }}/4"
+                          method="POST">
+                        <button class="busy-option">
+                            Busy 4 Hours
+                        </button>
+                    </form>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

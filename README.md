@@ -1,25 +1,26 @@
 # Team Availability Tracker
 
-Flask + SQLite application for tracking team member availability.
+A Flask + SQLite web application for tracking team member availability.
 
 ## Features
 
-- View team members
-- Mark members Available or Busy
-- Track last updated status
-- Show expected availability time
-- SQLite database integration
+* View team members and roles
+* Mark members as Available or Busy
+* Track last updated status
+* Display expected availability time
+* SQLite database integration
+* Flask backend with dynamic rendering
 
 ## Technologies Used
 
-- Python
-- Flask
-- SQLite
-- HTML
-- CSS
-- JavaScript
+* Python
+* Flask
+* SQLite
+* HTML
+* CSS
+* JavaScript
 
-## Run the Project
+## Installation
 
 ```bash
 pip install flask
@@ -27,6 +28,24 @@ python create_db.py
 python app.py
 ```
 
-Open:
+## Open
+
+Visit:
 
 http://127.0.0.1:5000
+
+## Project Structure
+
+```text
+team-availability-tracker/
+├── app.py
+├── create_db.py
+├── templates/
+│   └── index.html
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── main.js
+└── README.md
+```
